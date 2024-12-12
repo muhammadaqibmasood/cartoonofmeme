@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartoon Coin</title>
+    <style>
+      .sticky-button {
+        position: fixed;
+        right: -91px; /* Adjust as needed */
+        top: 32%;
+        transform: translateY(-50%);
+        z-index: 1000; /* Ensure it stays on top */
+      }
+
+      .sticky-button button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transform: rotate(90deg); /* Rotate 90 degrees */
+        transform-origin: left center; /* Set the origin for rotation */
+        font-weight: 700;
+      }
+
+      .sticky-button button:hover {
+        background-color: #165da9;
+      }
+
+      /* Popup container */
+      .popup {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1001; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+      }
+      /* Popup content */
+      .popup-content {
+        margin: auto;
+        display: block;
+        width: 50%;
+      }
+
+      /* Close button */
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        color: #fff;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        /* Popup content */
+        .popup-content {
+          margin: auto;
+          display: block;
+          width: 70%;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        /* Popup content */
+        .popup-content {
+          margin: auto;
+          display: block;
+          width: 90%;
+        }
+      }
+      @media only screen and (max-width: 425px) {
+        /* Popup content */
+        .popup-content {
+          margin: auto;
+          display: block;
+          width: 90%;
+        }
+      }
+    </style>
+
+    <style>
+      .sticky-newsletter-button {
+        position: fixed;
+        left: 15px; /* Adjust as needed */
+        top: 32%;
+        transform: translateY(-50%);
+        z-index: 1000; /* Ensure it stays on top */
+      }
+
+      #subscribeBtn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transform: rotate(90deg); /* Rotate 90 degrees */
+        transform-origin: left center; /* Set the origin for rotation */
+        font-weight: 700;
+      }
+
+      /* Popup container */
+      .popup {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1001; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+        text-align: center;
+      }
+
+      /* Popup content */
+      .popup-content {
+        margin: auto;
+        display: inline-block;
+        max-width: none; /* Remove max-width */
+        width: auto; /* Ensure the image takes its original width */
+        height: auto; /* Ensure the image takes its original height */
+        vertical-align: middle;
+        max-height: 100%;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Close button */
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        color: #fff;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* Centering the image vertically */
+      .popup::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <div class="sticky-button">
+      <button id="showImageButton">New x1000</button>
+    </div>
+    <div id="imagePopup" class="popup">
+      <span class="close">&times;</span>
+      <img
+        class="popup-content"
+        id="popupImage"
+        src="/assets/cartoon-of-meme.jpg"
+        alt="Popup Image"
+      />
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("newsletterPopup");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("subscribeBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementById("closeBtn");
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/64233c2a31ebfa0fe7f5343b/1gskq6283";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+
+      //   document.getElementById('downloadButton').addEventListener('click', function() {
+      // const link = document.createElement('a');
+      // link.href = '/assets/cartoon.ai'; // Replace with the actual file URL
+      // link.download = 'cartoon.ai'; // Replace with the desired file name
+      // document.body.appendChild(link);
+      // link.click();
+      // document.body.removeChild(link);
+
+      document
+        .getElementById("showImageButton")
+        .addEventListener("click", function () {
+          document.getElementById("imagePopup").style.display = "block";
+        });
+
+      document.querySelector(".close").addEventListener("click", function () {
+        document.getElementById("imagePopup").style.display = "none";
+      });
+
+      window.addEventListener("click", function (event) {
+        if (event.target == document.getElementById("imagePopup")) {
+          document.getElementById("imagePopup").style.display = "none";
+        }
+      });
+
+      // });
+    </script>
+  </body>
+</html>

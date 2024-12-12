@@ -1,0 +1,525 @@
+{
+  "version": "0.1.0",
+  "name": "presale",
+  "instructions": [
+    {
+      "name": "initializePresale",
+      "accounts": [
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "presalePda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "presaleTokenVault",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "bump",
+          "type": "u8"
+        },
+        {
+          "name": "stages",
+          "type": {
+            "vec": {
+              "defined": "Stage"
+            }
+          }
+        },
+        {
+          "name": "decimals",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "transferToken",
+      "accounts": [
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "presalePda",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "presaleTokenVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ownerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tokens",
+          "type": "u128"
+        },
+        {
+          "name": "decimals",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "buy",
+      "accounts": [
+        {
+          "name": "userAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "presalePda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "chainlinkFeed",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "chainlinkProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "lamports",
+          "type": "u128"
+        }
+      ]
+    },
+    {
+      "name": "existingBuy",
+      "accounts": [
+        {
+          "name": "userAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "presalePda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "chainlinkFeed",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "chainlinkProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "lamports",
+          "type": "u128"
+        }
+      ]
+    },
+    {
+      "name": "claim",
+      "accounts": [
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "presalePda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "presaleTokenVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "changeVesting",
+      "accounts": [
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "state",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "deletePresale",
+      "accounts": [
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "changeStage",
+      "accounts": [
+        {
+          "name": "presaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "activeStage",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "UserAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalTokens",
+            "type": "u128"
+          },
+          {
+            "name": "claimedTokens",
+            "type": "u128"
+          },
+          {
+            "name": "lamports",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PresaleAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "activeStage",
+            "type": "u8"
+          },
+          {
+            "name": "vesting",
+            "type": "u8"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "admin",
+            "type": "publicKey"
+          },
+          {
+            "name": "presaleTokenVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "mint",
+            "type": "publicKey"
+          },
+          {
+            "name": "decimals",
+            "type": "u8"
+          },
+          {
+            "name": "soldTokens",
+            "type": "u128"
+          },
+          {
+            "name": "solRaised",
+            "type": "u128"
+          },
+          {
+            "name": "stages",
+            "type": {
+              "vec": {
+                "defined": "Stage"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "Stage",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "allocation",
+            "type": "u128"
+          },
+          {
+            "name": "price",
+            "type": "u128"
+          },
+          {
+            "name": "soldTokens",
+            "type": "u128"
+          },
+          {
+            "name": "solRaised",
+            "type": "u128"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidOwner",
+      "msg": "Invalid owner."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidAccountOwner",
+      "msg": "Invalid account owner."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidVault",
+      "msg": "The vault given does not match the vault expected."
+    },
+    {
+      "code": 6003,
+      "name": "InvalidClaimAmount",
+      "msg": "You dont have enough tokens to claim!"
+    },
+    {
+      "code": 6004,
+      "name": "NotEnoughAmount",
+      "msg": "Claiming is not yet enabled. Please wait."
+    },
+    {
+      "code": 6005,
+      "name": "ClaimTimeError",
+      "msg": "Claiming not started yet!"
+    },
+    {
+      "code": 6006,
+      "name": "StageTimeUp",
+      "msg": "The current stage time is up. Please wait for the next stage to start."
+    },
+    {
+      "code": 6007,
+      "name": "AllocationReached",
+      "msg": "You can not buy more than the current stage allocated tokens!"
+    }
+  ]
+}
